@@ -5,7 +5,7 @@ import { TextGeometry } from './three/TextGeometry.js';
 import { FontLoader } from './three/FontLoader.js';
 import { GLTFLoader } from './three/GLTFLoader.js';
 import { TransformControls } from './three/TransformControls.js';
-import { CCDIKSolver } from '/three/CCDIKSolver.js';
+import { CCDIKSolver } from './three/CCDIKSolver.js';
 import Stats from './three/stats.module.js';
 // TWEEN.js
 import TWEEN from './tween/tween.esm.js';
