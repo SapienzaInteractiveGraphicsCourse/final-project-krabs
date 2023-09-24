@@ -1,12 +1,12 @@
 // THREE.js 
 import * as THREE from './three/three.module.min.js';
-import { OrbitControls } from './three/OrbitControls.js';
+import Stats from './three/stats.module.js';
 import { TextGeometry } from './three/TextGeometry.js';
 import { FontLoader } from './three/FontLoader.js';
 import { GLTFLoader } from './three/GLTFLoader.js';
 import { TransformControls } from './three/TransformControls.js';
 import { CCDIKSolver } from './three/CCDIKSolver.js';
-import Stats from './three/stats.module.js';
+import { OrbitControls } from './three/OrbitControls.js';
 // TWEEN.js
 import TWEEN from './tween/tween.esm.js';
 
@@ -90,7 +90,7 @@ let scene_is_ready = false;
 
 let orghographic_camera_size = 70;
 
-let normal_controls_target_position = new THREE.Vector3(0, 0, 0);
+let normal_controls_target_position = new THREE.Vector3(0, -0.5, 0);
 let camera_is_focused_on_crab = false;
 
 let function_keys = Array.from('1234567890qwertyuiopasdfghjklzxcvbnm');
@@ -1837,138 +1837,6 @@ async function start_scene() {
 				geometry.computeVertexNormals();
 				return geometry;
 			} else {
-				/*
-				vertices = new Float32Array([
-					0.000000, 1.500000 + (y_height - 1.0), -1.000000,
-					-0.382683, 1.500000 + (y_height - 1.0), -0.923880,
-					-0.707107, 1.500000 + (y_height - 1.0), -0.707107,
-					-0.923880, 1.500000 + (y_height - 1.0), -0.382683,
-					-1.000000, 1.500000, 0.000000,	// Base cone vertex
-					-0.923880, 1.500000 + (y_height - 1.0), 0.382683,
-					-0.707107, 1.500000 + (y_height - 1.0), 0.707107,
-					-0.382683, 1.500000 + (y_height - 1.0), 0.923880,
-					0.000000, 1.500000 + (y_height - 1.0), 1.000000,
-					0.382683, 1.500000 + (y_height - 1.0), 0.923880,
-					0.707107, 1.500000 + (y_height - 1.0), 0.707107,
-					0.923880, 1.500000 + (y_height - 1.0), 0.382683,
-					1.000000, 1.500000, 0.000000,	// Base cone vertex
-					0.923880, 1.500000 + (y_height - 1.0), -0.382683,
-					0.707107, 1.500000 + (y_height - 1.0), -0.707107,
-					0.382683, 1.500000 + (y_height - 1.0), -0.923880,
-					0.000000, 2.000000 + (y_height - 1.0), -1.000000,
-					-0.382683, 2.000000 + (y_height - 1.0), -0.923880,
-					-0.707107, 2.000000 + (y_height - 1.0), -0.707107,
-					-0.923880, 2.000000 + (y_height - 1.0), -0.382683,
-					-1.000000, 2.000000, 0.000000,	// Base cone vertex
-					-0.923880, 2.000000 + (y_height - 1.0), 0.382683,
-					-0.707107, 2.000000 + (y_height - 1.0), 0.707107,
-					-0.382683, 2.000000 + (y_height - 1.0), 0.923880,
-					0.000000, 2.000000 + (y_height - 1.0), 1.000000,
-					0.382683, 2.000000 + (y_height - 1.0), 0.923880,
-					0.707107, 2.000000 + (y_height - 1.0), 0.707107,
-					0.923880, 2.000000 + (y_height - 1.0), 0.382683,
-					1.000000, 2.000000, 0.000000,	// Base cone vertex
-					0.923880, 2.000000 + (y_height - 1.0), -0.382683,
-					0.707107, 2.000000 + (y_height - 1.0), -0.707107,
-					0.382683, 2.000000 + (y_height - 1.0), -0.923880,
-					0.000000, 0.000000 + (y_height - 1.0), -0.200000,	// Base cone vertex (top)
-					-0.141421, 0.000000 + (y_height - 1.0), -0.141421,// Base cone vertex (top)
-					-0.200000, 0.000000, 0.000000,	// Base cone vertex
-					-0.141421, 0.000000 + (y_height - 1.0), 0.141421,	// Base cone vertex (top)
-					0.000000, 0.000000 + (y_height - 1.0), 0.200000,	// Base cone vertex (top)
-					0.141421, 0.000000 + (y_height - 1.0), 0.141421,	// Base cone vertex (top)
-					0.200000, 0.000000, 0.000000,	// Base cone vertex
-					0.141421, 0.000000 + (y_height - 1.0), -0.141421,	// Base cone vertex (top)
-					0.000000, 1.500000 + (y_height - 1.0), -0.200000,	// Base cone vertex (top)
-					-0.141421, 1.500000 + (y_height - 1.0), -0.141421,// Base cone vertex (top)
-					-0.200000, 1.500000, 0.000000,	// Base cone vertex
-					-0.141421, 1.500000 + (y_height - 1.0), 0.141421,	// Base cone vertex (top)
-					0.000000, 1.500000 + (y_height - 1.0), 0.200000,	// Base cone vertex (top)
-					0.141421, 1.500000 + (y_height - 1.0), 0.141421,	// Base cone vertex (top)
-					0.200000, 1.500000, 0.000000,	// Base cone vertex
-					0.141421, 1.500000 + (y_height - 1.0), -0.141421,	// Base cone vertex (top)
-				]);
-	
-				faces = new Uint16Array([
-					6, 8, 7,
-					8, 23, 7,
-					20, 21, 22,
-					12, 28, 27,
-					0, 16, 31,
-					15, 30, 14,
-					7, 22, 6,
-					14, 29, 13,
-					6, 22, 21,
-					30, 31, 16,
-					26, 27, 28,
-					9, 24, 8,
-					0, 2, 1,
-					8, 10, 9,
-					16, 20, 24,
-					1, 16, 0,
-					8, 24, 23,
-					18, 19, 20,
-					5, 21, 20,
-					2, 4, 3,
-					15, 31, 30,
-					28, 29, 30,
-					0, 31, 15,
-					9, 25, 24,
-					4, 20, 19,
-					0, 8, 4,
-					24, 26, 28,
-					16, 18, 20,
-					28, 30, 16,
-					3, 18, 2,
-					5, 20, 4,
-					7, 23, 22,
-					13, 28, 12,
-					22, 23, 24,
-					10, 25, 9,
-					14, 30, 29,
-					1, 17, 16,
-					24, 28, 16,
-					4, 8, 6,
-					2, 17, 1,
-					12, 27, 11,
-					16, 17, 18,
-					4, 19, 3,
-					14, 0, 15,
-					10, 12, 11,
-					8, 0, 12,
-					3, 19, 18,
-					24, 25, 26,
-					4, 6, 5,
-					10, 26, 25,
-					11, 26, 10,
-					13, 29, 28,
-					6, 21, 5,
-					12, 0, 14,
-					8, 12, 10,
-					0, 4, 2,
-					2, 18, 17,
-					20, 22, 24,
-					11, 27, 26,
-					12, 14, 13,
-	
-					36, 45, 44,
-					32, 41, 40,
-					37, 46, 45,
-					35, 44, 43,
-					34, 35, 43,
-					35, 36, 44,
-					36, 37, 45,
-					39, 32, 40,
-					32, 33, 41,
-					37, 38, 46,
-					33, 34, 42,
-					39, 40, 47,
-					33, 42, 41,
-					38, 47, 46,
-					38, 39, 47,
-					34, 43, 42,
-				]);
-				*/
 				// Load the gltf model for the button
 				let loader = new GLTFLoader();
 				let button_model;
@@ -1978,15 +1846,6 @@ async function start_scene() {
 						// called when the resource is loaded
 						function (gltf) {
 							button_model = gltf.scene;
-							// button_model.scale.set(0.5, 0.5, 0.5);
-							// button_model.position.set(0, 0, 0);
-							// button_model.rotation.set(Math.PI / 2, 0, 0);
-							// button_model.traverse(function (child) {
-							// 	if (child.isMesh) {
-							// 		child.material = special_button_material;
-							// 	}
-							// });
-							// button_model.name = 'typewriter_button_model';
 						},
 					);
 				// Return the loaded geometry
