@@ -10,6 +10,12 @@ import Stats from './three/stats.module.js';
 // TWEEN.js
 import TWEEN from './tween/tween.esm.js';
 
+// Get the path of the root folder
+let root_folder = window.location.href.substring(0, window.location.href.lastIndexOf("/")) + "/";
+let hostname = window.location.hostname;
+console.log("Root folder path: " + root_folder);
+console.log("Hostname: " + hostname);
+
 // Make it so that, on any error, a <div> is added to the page with the error message, in the top-middle of the page
 function on_error(error) {
 	let error_div = document.createElement("div");
