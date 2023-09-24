@@ -16,7 +16,7 @@ let hostname = window.location.hostname;
 // console.log("Root folder path: " + root_folder);
 // console.log("Hostname: " + hostname);
 
-console.log("Version 1.0.0");
+console.log("Version 1.1.0");
 
 function get_url(resource) {
 	if (resource.startsWith("/")) resource = resource.substring(1);
@@ -444,7 +444,7 @@ let crab_base_texture_loader = new THREE.TextureLoader();
 // Load the crab GLTF model
 function load_crab_model(crab_texture_image = null) {
 	let loader = new GLTFLoader();
-	loader.load(get_url('/3d/crab/Crab.glb'), function (object) {
+	loader.load(get_url('/3d/crab/Crab.gltf'), function (object) {
 		crab_model = object.scene;
 		crab_model.name = 'crab_crab_model';
 		crab_model.position.set(crab_spawn_position.x, crab_spawn_position.y + keyboard_base_height + crab_bases_height + sub_base_height + additional_crab_base_height, crab_spawn_position.z);
