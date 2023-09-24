@@ -26,7 +26,7 @@ Indicate one of the 5 squares to the crab and he will move there to play a melod
 
 You can try the synthesizer at the following link
 <br>
-https://sapienzainteractivegraphicscourse.github.io/final-project-distefano-interactivegraphics2023/
+https://sapienzainteractivegraphicscourse.github.io/final-project-krabs/
 <br>
 
 ## :keyboard: Controls
