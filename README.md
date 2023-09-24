@@ -38,7 +38,7 @@ https://sapienzainteractivegraphicscourse.github.io/final-project-krabs/
 - Use the <b>"," button</b> (:musical_note: button) to generate a random beats combination
 - Hold down the <b>"Alt"</b> button (:crab: button) to play the crab melody
 - Click on one of the 5 colored squares to make the crab move there (and change the crab melody)
-- Use <b>SPACE</b> to stop all sounds
+- Use <b>space</b> key to stop all sounds
 - Use <b>mouse left click</b> to rotate the camera
 - Use <b>mouse wheel</b> to zoom in/out
 - Use <b>mouse right click</b> to move (pan) the camera
