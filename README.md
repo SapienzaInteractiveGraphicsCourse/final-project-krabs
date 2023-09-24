@@ -53,6 +53,10 @@ Created by <b>Valerio Di Stefano</b> using plain <b>HTML, CSS and JavaScript</b>
 <br>
 For the <b>Interactive Graphics 2022/2023</b> course at <b>Sapienza University of Rome</b>
 <br>
+Project PDF report available at:
+<br>
+https://github.com/SapienzaInteractiveGraphicsCourse/final-project-krabs/blob/main/KRABS%20Project%20Report.pdf
+<br>
 <br>
 <b>External libraries:</b>
 <br>
