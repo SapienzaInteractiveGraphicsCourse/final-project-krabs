@@ -13,7 +13,10 @@ import TWEEN from './tween/tween.esm.js';
 // Get the path of the root folder
 const root_folder = window.location.href.substring(0, window.location.href.lastIndexOf("/")) + "/";
 const hostname = window.location.hostname;
+// Path from the hostname to the root folder
+const root_absolute_path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf("/")) + "/";
 console.log("Root folder path: " + root_folder);
+console.log("Root absolute path: " + root_absolute_path);
 console.log("Hostname: " + hostname);
 
 console.log("Version 1.4.0");
@@ -23,7 +26,7 @@ function get_url(resource, flag = false) {
 	if (!flag || true) {
 		if (resource.startsWith("/")) to_ret = resource.substring(1);
 		if (resource.startsWith("./")) to_ret = resource.substring(2);
-		to_ret = root_folder + to_ret;
+		to_ret = root_absolute_path + to_ret;
 	} else {
 		if (resource.startsWith("/")) to_ret = ".." + resource;
 		if (resource.startsWith("./")) to_ret = "." + resource;
