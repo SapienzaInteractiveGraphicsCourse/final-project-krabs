@@ -33,8 +33,8 @@ https://sapienzainteractivegraphicscourse.github.io/final-project-krabs/
 
 <!-- Add controls -->
 - Click on one of the 3 buttons in the main menu to start the synthesizer with the selected keyboard style
-- Use your computer's <b>keyboard letters</b> (from A to Z) to play beat sounds
-- <b>Hold down keyboard letters</b> to loop the beat sounds
+- Use your computer's <b>keyboard letter keys</b> (from A to Z) to play beat sounds
+- <b>Hold down keyboard letter keys</b> to loop the beat sounds
 - Use the <b>"," button</b> (:musical_note: button) to generate a random beats combination
 - Hold down the <b>"Alt"</b> button (:crab: button) to play the crab melody
 - Click on one of the 5 colored squares to make the crab move there (and change the crab melody)
@@ -42,9 +42,9 @@ https://sapienzainteractivegraphicscourse.github.io/final-project-krabs/
 - Use <b>mouse left click</b> to rotate the camera
 - Use <b>mouse wheel</b> to zoom in/out
 - Use <b>mouse right click</b> to move (pan) the camera
-- <b>ESC</b> to get back to the main menu
 - Use <b>Tab</b> to toggle the camera view between the crab and the keyboard
 - Use <b>Enter</b> to hide the overlay controls info
+- <b>ESC</b> to get back to the main menu
 
 ## :information_source: Project Info
 
