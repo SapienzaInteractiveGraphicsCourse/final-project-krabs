@@ -423,14 +423,14 @@ function refresh_crab_idle() {
 let crab_base_texture_loader = new THREE.TextureLoader();
 // let crab_textures = [];
 // for (let i = 0; i < crab_texture_colors.length; i++) {
-// 	let crab_texture = await crab_base_texture_loader.loadAsync('./3d/crab/Crab_Base_color_' + crab_texture_colors[i] + '.png')
+// 	let crab_texture = await crab_base_texture_loader.loadAsync('/3d/crab/Crab_Base_color_' + crab_texture_colors[i] + '.png')
 // 	crab_textures.push(crab_texture);
 // }
 
 // Load the crab GLTF model
 function load_crab_model(crab_texture_image = null) {
 	let loader = new GLTFLoader();
-	loader.load('./3d/crab/crab.gltf', function (object) {
+	loader.load('/3d/crab/Crab.glb', function (object) {
 		crab_model = object.scene;
 		crab_model.name = 'crab_crab_model';
 		crab_model.position.set(crab_spawn_position.x, crab_spawn_position.y + keyboard_base_height + crab_bases_height + sub_base_height + additional_crab_base_height, crab_spawn_position.z);
@@ -1955,7 +1955,7 @@ async function start_scene() {
 				let button_model;
 				await loader.loadAsync(
 					// resource URL
-					'./3d/general/typewriter_button.gltf').then(
+					'/3d/general/typewriter_button.gltf').then(
 						// called when the resource is loaded
 						function (gltf) {
 							button_model = gltf.scene;
@@ -2002,7 +2002,7 @@ async function start_scene() {
 
 		if (selected_keyboard_version == keyboard_versions.laptop_keyboard) {
 			// Add the "keyboard_normal_map.png" normal map to the sub base material to get a PC case silver look
-			const normal_map = new THREE.TextureLoader().load('./3d/general/keyboard_normal_map.png');
+			const normal_map = new THREE.TextureLoader().load('/3d/general/keyboard_normal_map.png');
 			normal_map.wrapS = THREE.ClampToEdgeWrapping;
 			normal_map.wrapT = THREE.ClampToEdgeWrapping;
 			normal_map.repeat.set(1, 1);
@@ -2020,7 +2020,7 @@ async function start_scene() {
 			sub_base_material.metalness = 0.5;
 			sub_base_material.roughness = 0.1;
 			// Add the metalness map
-			const metalness_map = new THREE.TextureLoader().load('./3d/general/keyboard_metalness_map.png');
+			const metalness_map = new THREE.TextureLoader().load('/3d/general/keyboard_metalness_map.png');
 			metalness_map.wrapS = THREE.RepeatWrapping;
 			metalness_map.wrapT = THREE.RepeatWrapping;
 			// Copy the same metalness map
@@ -2655,7 +2655,7 @@ async function start_scene() {
 	set_crab_base_as_active(selected_crab_base_index);
 
 	crab_base_texture_loader.load(
-		'./3d/crab/Crab_Base_color_' + crab_texture_colors[selected_keyboard_version] + '.png',
+		'/3d/crab/Crab_Base_color_' + crab_texture_colors[selected_keyboard_version] + '.png',
 		function (texture) {
 			load_crab_model(texture);
 		});
@@ -2697,7 +2697,7 @@ async function start_scene() {
 	let guitar_model_container = undefined, guitar_model = undefined;
 	function load_guitar_model() {
 		let loader = new GLTFLoader();
-		loader.load('./3d/guitar/guitar.gltf', function (object) {
+		loader.load('/3d/guitar/guitar.gltf', function (object) {
 			guitar_model = object.scene;
 			guitar_model.name = 'guitar_model';
 			let guitar_scale = 1;
@@ -2732,7 +2732,7 @@ async function start_scene() {
 	let piano_model_container = undefined, piano_model = undefined;
 	function load_piano_model() {
 		let loader = new GLTFLoader();
-		loader.load('./3d/piano/piano.gltf', function (object) {
+		loader.load('/3d/piano/piano.gltf', function (object) {
 			piano_model = object.scene;
 			piano_model.name = 'piano_model';
 			let piano_scale = 1.385;
@@ -2802,7 +2802,7 @@ async function start_scene() {
 	let dj_station_model_container = undefined, dj_station_model = undefined;
 	function load_dj_station_model() {
 		let loader = new GLTFLoader();
-		loader.load('./3d/dj_station/dj_station.gltf', function (object) {
+		loader.load('/3d/dj_station/dj_station.gltf', function (object) {
 			dj_station_model = object.scene;
 			dj_station_model.name = 'dj_station_model';
 			// let dj_station_scale = 0.675;
@@ -2839,7 +2839,7 @@ async function start_scene() {
 	let bass_model_container = undefined, bass_model = undefined;
 	function load_bass_model() {
 		let loader = new GLTFLoader();
-		loader.load('./3d/bass/bass.gltf', function (object) {
+		loader.load('/3d/bass/bass.gltf', function (object) {
 			bass_model = object.scene;
 			bass_model.name = 'bass_model';
 			let bass_scale = 1.475;
@@ -2876,7 +2876,7 @@ async function start_scene() {
 	let synth_model_container = undefined, synth_model = undefined;
 	function load_synth_model() {
 		let loader = new GLTFLoader();
-		loader.load('./3d/synth/synth.gltf', function (object) {
+		loader.load('/3d/synth/synth.gltf', function (object) {
 			synth_model = object.scene;
 			synth_model.name = 'synth_model';
 			let synth_scale = 0.2;
