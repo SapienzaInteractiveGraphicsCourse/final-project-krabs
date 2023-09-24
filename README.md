@@ -33,7 +33,7 @@ https://sapienzainteractivegraphicscourse.github.io/final-project-krabs/
 
 <!-- Add controls -->
 - Click on one of the 3 buttons in the main menu to start the synthesizer with the selected keyboard style
-- Use <b>keyboard letters</b> (from A to Z) to play beat sounds
+- Use your computer's <b>keyboard letters</b> (from A to Z) to play beat sounds
 - <b>Hold down keyboard letters</b> to loop the beat sounds
 - Use the <b>"," button</b> (:musical_note: button) to generate a random beats combination
 - Hold down the <b>"Alt"</b> button (:crab: button) to play the crab melody
