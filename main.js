@@ -12,21 +12,21 @@ import TWEEN from './tween/tween.esm.js';
 
 // Get the path of the root folder
 const root_folder = window.location.href.substring(0, window.location.href.lastIndexOf("/")) + "/";
-let hostname = window.location.hostname;
-// console.log("Root folder path: " + root_folder);
-// console.log("Hostname: " + hostname);
+const hostname = window.location.hostname;
+console.log("Root folder path: " + root_folder);
+console.log("Hostname: " + hostname);
 
-console.log("Version 1.3.0");
+console.log("Version 1.4.0");
 
 function get_url(resource, flag = false) {
 	let to_ret = "";
-	if (!flag) {
-		if (resource.startsWith("/")) resource = resource.substring(1);
-		if (resource.startsWith("./")) resource = resource.substring(2);
+	if (!flag || true) {
+		if (resource.startsWith("/")) to_ret = resource.substring(1);
+		if (resource.startsWith("./")) to_ret = resource.substring(2);
 		to_ret = root_folder + resource;
 	} else {
-		if (resource.startsWith("/")) resource = ".." + resource;
-		if (resource.startsWith("./")) resource = "." + resource;
+		if (resource.startsWith("/")) to_ret = ".." + resource;
+		if (resource.startsWith("./")) to_ret = "." + resource;
 		to_ret = resource;
 	}
 	console.log("Trying to load '" + resource + "' from: " + to_ret);
