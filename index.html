@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- Add an empty favicon -->
+	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<!-- Main menu -->
+	<div id="main-menu" style="width: 100vw; height: 100vh;">
+		<div id="main-menu-container">
+			<div id="title-container">
+				<div id="logo-container">
+					<img id="logo" src="images/logo.png" alt="logo">
+				</div>
+			</div>
+			<div id="buttons-container">
+				<div id="laptop-version">
+					<img src="images/laptop_button.png" alt="laptop">
+				</div>
+				<div id="pc-version">
+					<img src="images/pc_button.png" alt="pc">
+				</div>
+				<div id="typewriter-version">
+					<img src="images/typewriter_button.png" alt="typewriter">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Scene UI -->
+	<div id="scene-ui">
+		<div class="controls-container">
+			<div>
+				<div><img src="images/icons/keys_icon.png" class="keyboard-icon" alt="Keys Buttons"></div>
+				<div>Beats (hold to loop)</div>
+			</div>
+			<div>
+				<div><img src="images/icons/comma_icon.png" class="keyboard-icon" alt=","></div>
+				<div>Random Beats</div>
+			</div>
+			<div>
+				<div><img src="images/icons/alt_icon.png" class="keyboard-icon" alt="Alt"></div>
+				<div>Melody (hold to loop)</div>
+			</div>
+			<div>
+				<div><img src="images/icons/space_icon.png" class="keyboard-icon" alt="Spacebar"></div>
+				<div>Stop sounds</div>
+			</div>
+		</div>
+		<div class="controls-container">
+			<div>
+				<div><img src="images/icons/left_mouse_icon.png" class="mouse-icon" alt="Left mouse"></div>
+				<div>Rotate view</div>
+			</div>
+			<div>
+				<div><img src="images/icons/scrollbar_icon.png" class="mouse-icon" alt="Scroll mouse"></div>
+				<div>Zoom</div>
+			</div>
+			<div>
+				<div><img src="images/icons/right_mouse_icon.png" class="mouse-icon" alt="Right mouse"></div>
+				<div>Pan view</div>
+			</div>
+			<div class="no-icon">
+				<span>Click on&nbsp;&nbsp;<img src="images/icons/squares_icon.png" alt="▣▣▣▣▣">&nbsp;&nbsp;to change melody</span>
+			</div>
+			<div>
+				<div><img src="images/icons/tab_icon.png" class="other-icon" alt="Tab"></div>
+				<div>Camera focus</div>
+			</div>
+			<div>
+				<div><img src="images/icons/enter_icon.png" class="other-icon" alt="Enter"></div>
+				<div>Show/Hide controls</div>
+			</div>
+		</div>
+	</div>
+
+	<canvas id="effect-canvas" style="visibility: hidden;" height="500" width="500"></canvas>
+
+	<!-- Include jquery -->
+	<!-- <script src="jquery/jquery.min.js"></script> -->
+
+	<!-- Include tween  -->
+	<!-- <script src="tween/tween.js"></script> -->
+	
+	<!-- GLobal variables -->
+	<script type="text/javascript">
+		// let debug = false;
+	</script>
+
+	<!-- Include the main script -->
+	<script type="module" src="main.js"></script>
+	
+</body>
+</html>
