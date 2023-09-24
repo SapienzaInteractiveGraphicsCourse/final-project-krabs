@@ -14,29 +14,18 @@ import TWEEN from './tween/tween.esm.js';
 // document.body.scrollTop = 0; // For Safari
 // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
-// Get the path of the root folder
+// Get the path of the root, the hostname and the absolute path of the root
 const root_folder = window.location.href.substring(0, window.location.href.lastIndexOf("/")) + "/";
 const hostname = window.location.hostname;
-// Path from the hostname to the root folder
 const root_absolute_path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf("/")) + "/";
-console.log("Root folder path: " + root_folder);
-console.log("Root absolute path: " + root_absolute_path);
-console.log("Hostname: " + hostname);
+// console.log("Version 1.5.0");
 
-console.log("Version 1.4.0");
-
-function get_url(resource, flag = false) {
+function get_url(resource, debug_flag = false) {
 	let to_ret = "";
-	if (!flag || true) {
-		if (resource.startsWith("/")) to_ret = resource.substring(1);
-		if (resource.startsWith("./")) to_ret = resource.substring(2);
-		to_ret = root_absolute_path + to_ret;
-	} else {
-		if (resource.startsWith("/")) to_ret = ".." + resource;
-		if (resource.startsWith("./")) to_ret = "." + resource;
-		to_ret = resource;
-	}
-	console.log("Trying to load '" + resource + "' from: " + to_ret);
+	if (resource.startsWith("/")) to_ret = resource.substring(1);
+	if (resource.startsWith("./")) to_ret = resource.substring(2);
+	to_ret = root_absolute_path + to_ret;
+	// console.log("Trying to load '" + resource + "' from: " + to_ret);
 	return to_ret;
 }
 
@@ -4671,6 +4660,13 @@ async function start_scene() {
 		}
 	});
 
+	// Add an event listener for the "Esc" button, reloads the main page
+	document.addEventListener('keydown', function (event) {
+		if (event.key == "Escape") {
+			window.location.reload();
+		}
+	});
+
 	// Create a render function
 	const render = function () {
 
@@ -5270,7 +5266,7 @@ async function start_scene() {
 				}
 			});
 
-			console.log("Scene is ready!");
+			// console.log("Scene is ready!");
 
 		}
 
@@ -5289,7 +5285,7 @@ function start_scene_with_keyboard_version(keyboard_version) {
 	setTimeout(() => {
 		// Start the scene
 		start_scene();
-	}, 150);
+	}, 100);
 }
 
 function fade_out_ui_elements(keyboard_version) {
@@ -5297,9 +5293,9 @@ function fade_out_ui_elements(keyboard_version) {
 	let buttons_container = document.getElementById("buttons-container");
 	let logo_container = document.getElementById("logo-container");
 	let buttons_container_children = buttons_container.children;
-	let animation_delay = 750;
-	let move_away_animation_time = 1250;
-	let in_between_delay = 200;
+	let animation_delay = 1000;
+	let move_away_animation_time = 1500;
+	let in_between_delay = 250;
 	logo_container.style.animation = "move-away-up " + (move_away_animation_time + in_between_delay * buttons_container_children.length).toString() + "ms " + animation_delay + "ms forwards";
 	// Move down with a delay in between for the div children of #buttons-container
 	for (let i = 0; i < buttons_container_children.length; i++) {
