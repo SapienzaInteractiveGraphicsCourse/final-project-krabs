@@ -11,10 +11,18 @@ import Stats from './three/stats.module.js';
 import TWEEN from './tween/tween.esm.js';
 
 // Get the path of the root folder
-let root_folder = window.location.href.substring(0, window.location.href.lastIndexOf("/")) + "/";
+const root_folder = window.location.href.substring(0, window.location.href.lastIndexOf("/")) + "/";
 let hostname = window.location.hostname;
-console.log("Root folder path: " + root_folder);
-console.log("Hostname: " + hostname);
+// console.log("Root folder path: " + root_folder);
+// console.log("Hostname: " + hostname);
+
+console.log("Version 1.0.0");
+
+function get_url(resource) {
+	if (resource.startsWith("/")) resource = resource.substring(1);
+	if (resource.startsWith("./")) resource = resource.substring(2);
+	return root_folder + resource;
+}
 
 // Make it so that, on any error, a <div> is added to the page with the error message, in the top-middle of the page
 function on_error(error) {
@@ -436,7 +444,7 @@ let crab_base_texture_loader = new THREE.TextureLoader();
 // Load the crab GLTF model
 function load_crab_model(crab_texture_image = null) {
 	let loader = new GLTFLoader();
-	loader.load('/3d/crab/Crab.glb', function (object) {
+	loader.load(get_url('/3d/crab/Crab.glb'), function (object) {
 		crab_model = object.scene;
 		crab_model.name = 'crab_crab_model';
 		crab_model.position.set(crab_spawn_position.x, crab_spawn_position.y + keyboard_base_height + crab_bases_height + sub_base_height + additional_crab_base_height, crab_spawn_position.z);
@@ -1084,7 +1092,7 @@ function get_sound_resource(sound_base_name, sound_num, pad_name_number = true, 
 	if (sound_num < 10 && pad_name_number) sound_num_string = '0' + sound_num_string;
 	let sound_url = sound_base_name.replace('#', sound_num_string);
 	// const audio = new Audio(sound_url);
-	const audio = getAudioSource(sound_url, volume);
+	const audio = getAudioSource(get_url(sound_url), volume);
 	return audio;
 }
 // Create a global audio source (for "detune", 1 is a semitone, 12 is an octave)
@@ -1961,7 +1969,7 @@ async function start_scene() {
 				let button_model;
 				await loader.loadAsync(
 					// resource URL
-					'/3d/general/typewriter_button.gltf').then(
+					get_url('/3d/general/typewriter_button.gltf')).then(
 						// called when the resource is loaded
 						function (gltf) {
 							button_model = gltf.scene;
@@ -2008,7 +2016,7 @@ async function start_scene() {
 
 		if (selected_keyboard_version == keyboard_versions.laptop_keyboard) {
 			// Add the "keyboard_normal_map.png" normal map to the sub base material to get a PC case silver look
-			const normal_map = new THREE.TextureLoader().load('/3d/general/keyboard_normal_map.png');
+			const normal_map = new THREE.TextureLoader().load(get_url('/3d/general/keyboard_normal_map.png'));
 			normal_map.wrapS = THREE.ClampToEdgeWrapping;
 			normal_map.wrapT = THREE.ClampToEdgeWrapping;
 			normal_map.repeat.set(1, 1);
@@ -2026,7 +2034,7 @@ async function start_scene() {
 			sub_base_material.metalness = 0.5;
 			sub_base_material.roughness = 0.1;
 			// Add the metalness map
-			const metalness_map = new THREE.TextureLoader().load('/3d/general/keyboard_metalness_map.png');
+			const metalness_map = new THREE.TextureLoader().load(get_url('/3d/general/keyboard_metalness_map.png'));
 			metalness_map.wrapS = THREE.RepeatWrapping;
 			metalness_map.wrapT = THREE.RepeatWrapping;
 			// Copy the same metalness map
@@ -2176,8 +2184,7 @@ async function start_scene() {
 
 				if (!is_space_key) {
 
-					let font_json = load_json('./fonts/Arial_Modified.json');
-					// let font_json = load_json('./fonts/helvetiker_regular.typeface.json');
+					let font_json = load_json(get_url('/fonts/Arial_Modified.json'));
 					// Font loader takes a font typeface json and creates a font object
 					// NOTE: font was converted from otf to json https://gero3.github.io/facetype.js/
 					let font = new FontLoader().parse(font_json);
@@ -2661,7 +2668,7 @@ async function start_scene() {
 	set_crab_base_as_active(selected_crab_base_index);
 
 	crab_base_texture_loader.load(
-		'/3d/crab/Crab_Base_color_' + crab_texture_colors[selected_keyboard_version] + '.png',
+		get_url('/3d/crab/Crab_Base_color_' + crab_texture_colors[selected_keyboard_version] + '.png'),
 		function (texture) {
 			load_crab_model(texture);
 		});
@@ -2703,7 +2710,7 @@ async function start_scene() {
 	let guitar_model_container = undefined, guitar_model = undefined;
 	function load_guitar_model() {
 		let loader = new GLTFLoader();
-		loader.load('/3d/guitar/guitar.gltf', function (object) {
+		loader.load(get_url('/3d/guitar/guitar.gltf'), function (object) {
 			guitar_model = object.scene;
 			guitar_model.name = 'guitar_model';
 			let guitar_scale = 1;
@@ -2738,7 +2745,7 @@ async function start_scene() {
 	let piano_model_container = undefined, piano_model = undefined;
 	function load_piano_model() {
 		let loader = new GLTFLoader();
-		loader.load('/3d/piano/piano.gltf', function (object) {
+		loader.load(get_url('/3d/piano/piano.gltf'), function (object) {
 			piano_model = object.scene;
 			piano_model.name = 'piano_model';
 			let piano_scale = 1.385;
@@ -2808,7 +2815,7 @@ async function start_scene() {
 	let dj_station_model_container = undefined, dj_station_model = undefined;
 	function load_dj_station_model() {
 		let loader = new GLTFLoader();
-		loader.load('/3d/dj_station/dj_station.gltf', function (object) {
+		loader.load(get_url('/3d/dj_station/dj_station.gltf'), function (object) {
 			dj_station_model = object.scene;
 			dj_station_model.name = 'dj_station_model';
 			// let dj_station_scale = 0.675;
@@ -2845,7 +2852,7 @@ async function start_scene() {
 	let bass_model_container = undefined, bass_model = undefined;
 	function load_bass_model() {
 		let loader = new GLTFLoader();
-		loader.load('/3d/bass/bass.gltf', function (object) {
+		loader.load(get_url('/3d/bass/bass.gltf'), function (object) {
 			bass_model = object.scene;
 			bass_model.name = 'bass_model';
 			let bass_scale = 1.475;
@@ -2882,7 +2889,7 @@ async function start_scene() {
 	let synth_model_container = undefined, synth_model = undefined;
 	function load_synth_model() {
 		let loader = new GLTFLoader();
-		loader.load('/3d/synth/synth.gltf', function (object) {
+		loader.load(get_url('/3d/synth/synth.gltf'), function (object) {
 			synth_model = object.scene;
 			synth_model.name = 'synth_model';
 			let synth_scale = 0.2;
@@ -5288,6 +5295,12 @@ function fade_out_ui_elements(keyboard_version) {
 		// child.style.animationDelay = in_between_delay.toString() + "s";
 	}
 }
+
+document.addEventListener('click', () => {
+	// Avoid Chrome's autoplay policy
+	// https://developer.chrome.com/blog/autoplay/#webaudio
+	listener.context.resume();
+});
 
 // Make it so that if the user clicks on the "#pc-version" button, "#laptop-version" button or "#typewriter-version" button, the scene is started with the corresponding keyboard version
 document.getElementById("pc-version").addEventListener('click', () => {
