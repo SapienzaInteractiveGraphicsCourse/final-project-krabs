@@ -23,7 +23,7 @@ function get_url(resource, flag = false) {
 	if (!flag || true) {
 		if (resource.startsWith("/")) to_ret = resource.substring(1);
 		if (resource.startsWith("./")) to_ret = resource.substring(2);
-		to_ret = root_folder + resource;
+		to_ret = root_folder + to_ret;
 	} else {
 		if (resource.startsWith("/")) to_ret = ".." + resource;
 		if (resource.startsWith("./")) to_ret = "." + resource;
