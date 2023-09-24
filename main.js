@@ -11,8 +11,8 @@ import Stats from './three/stats.module.js';
 import TWEEN from './tween/tween.esm.js';
 
 // Set page scroll to top
-// document.body.scrollTop = 0; // For Safari
-// document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+document.body.scrollTop = 0; // For Safari
+document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
 // Get the path of the root, the hostname and the absolute path of the root
 const root_folder = window.location.href.substring(0, window.location.href.lastIndexOf("/")) + "/";
@@ -4663,6 +4663,7 @@ async function start_scene() {
 	// Add an event listener for the "Esc" button, reloads the main page
 	document.addEventListener('keydown', function (event) {
 		if (event.key == "Escape") {
+			event.preventDefault();
 			window.location.reload();
 		}
 	});
